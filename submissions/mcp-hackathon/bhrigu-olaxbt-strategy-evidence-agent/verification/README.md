@@ -2,39 +2,39 @@
 
 ## Prerequisites
 
-- Review commit: `e15d5e114502bfdcfd6de79d95c6ff5cdbc018c3`
-- API base URL: `https://bhrigu-bitcoin-research-state-jfx7kqw4e-aibhrigus-projects.vercel.app`
+- Review commit: `d29423daf121a4318dec063d0694b5fec8eb2ed3`
+- API base URL: `https://bhrigu-bitcoin-research-state-rn4vpiwc8-aibhrigus-projects.vercel.app`
 - Authentication: no reviewer credential. The OlaXBT Nexus credential remains server-side.
 
 ## 1. Health check
 
 ```bash
-curl --fail --silent --show-error https://bhrigu-bitcoin-research-state-jfx7kqw4e-aibhrigus-projects.vercel.app/health
+curl --fail --silent --show-error https://bhrigu-bitcoin-research-state-rn4vpiwc8-aibhrigus-projects.vercel.app/health
 ```
 
 Expected:
 
 ```json
-{"status":"ok","commit":"e15d5e114502bfdcfd6de79d95c6ff5cdbc018c3"}
+{"status":"ok","commit":"d29423daf121a4318dec063d0694b5fec8eb2ed3"}
 ```
 
 ## 2. Deployment proof
 
 ```bash
-curl --fail --silent --show-error https://bhrigu-bitcoin-research-state-jfx7kqw4e-aibhrigus-projects.vercel.app/.well-known/xagent-verification.json
+curl --fail --silent --show-error https://bhrigu-bitcoin-research-state-rn4vpiwc8-aibhrigus-projects.vercel.app/.well-known/xagent-verification.json
 ```
 
 Expected:
 
 ```json
-{"schemaVersion":1,"slug":"bhrigu-olaxbt-strategy-evidence-agent","commit":"e15d5e114502bfdcfd6de79d95c6ff5cdbc018c3"}
+{"schemaVersion":1,"slug":"bhrigu-olaxbt-strategy-evidence-agent","commit":"d29423daf121a4318dec063d0694b5fec8eb2ed3"}
 ```
 
 ## 3. Real REST strategy-evidence call
 
 ```bash
 curl --fail --silent --show-error \
-  --request POST https://bhrigu-bitcoin-research-state-jfx7kqw4e-aibhrigus-projects.vercel.app/v1/strategy-evidence \
+  --request POST https://bhrigu-bitcoin-research-state-rn4vpiwc8-aibhrigus-projects.vercel.app/v1/strategy-evidence \
   --header 'content-type: application/json' \
   --data '{"symbol":"BTC/USDT"}'
 ```
@@ -61,7 +61,7 @@ The direction is normalized only from the observed OlaXBT `trade_intent` field. 
 
 ```bash
 curl --fail --silent --show-error \
-  --request POST https://bhrigu-bitcoin-research-state-jfx7kqw4e-aibhrigus-projects.vercel.app/mcp \
+  --request POST https://bhrigu-bitcoin-research-state-rn4vpiwc8-aibhrigus-projects.vercel.app/mcp \
   --header 'content-type: application/json' \
   --data '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"bhrigu_get_olaxbt_strategy_evidence","arguments":{"symbol":"BTC/USDT"}}}'
 ```
