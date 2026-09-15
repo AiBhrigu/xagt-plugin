@@ -14,6 +14,9 @@ repository permission, no configured secrets, pinned action commits, a lockfile,
 and dependency installation with lifecycle scripts disabled. Checkout credentials
 are not persisted. `submissions/` is excluded from the working directory and its
 absence is checked before installing dependencies or executing package code.
+The job also checks dependencies against npm's advisory database and fails for
+known moderate-or-higher vulnerabilities. This is a point-in-time advisory check,
+not proof that a dependency is safe; advisory service failures also block the job.
 
 The separate submission-validation workflow still checks submission source,
 commit, and deployment proof without executing submitted projects. Repository CI
