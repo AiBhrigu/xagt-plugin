@@ -102,3 +102,13 @@ docker compose up --build          # 容器化：容器内 8000，宿主 127.0.0
   解析且只接受 40 位哈希，保证 health 上报的就是本次部署的真实 commit；
 - CI：每次推送在 GitHub Actions（Ubuntu 3.11/3.12/3.13 + Windows 3.13）执行 ruff + pytest，状态见仓库 README 徽章与 Actions 页；
 - 正式评审期如迁移常驻 VPS，仅更换部署环境，端点契约、slug、commit 校验逻辑不变，并会通过补充 PR 披露。
+
+## 7. 2026-09-19 复核记录（SHA 一致性）
+
+- 三处口径已统一为 `81729f9d39d1f2f0db279265ab6cc5d387a3921f`：
+  - `submission.json` 的 `reviewCommit`；
+  - `GET /health` 返回的 `commit`；
+  - `GET /.well-known/xagent-verification.json` 返回的 `commit`；
+- PR 描述中的 "Review commit" 已同步更正为同一 SHA（此前为旧值 `fc7d3d6…`，
+  该提交仅为早期评审快照，未部署；线上服务在 09-16 校验后已重新部署至 81729f9）；
+- 本次更新仅为触发校验重跑并记录复核结论，不改变 `source/` 评审快照与 `reviewCommit`。
